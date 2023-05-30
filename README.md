@@ -17,8 +17,15 @@ Based on AWS Fargate, Docker application written in Rust which connects to Sales
 
 5- Run commands
 
-    a- `make login`  (every few hours as your AWS session will expire automatically)
-    b- `make init`   (once)
-    c- `make update` (code change)
+  a- `make login`  (every few hours as your AWS session will expire automatically)
+  b- `make init`   (once)
+  c- `make update` (code change)
 
+6- Manual Run
 
+  docker run --rm -it \
+		-e USERNAME='salesforce@username.com' \
+		-e PASSWORD='password_and_security_token' \
+		-e INSTANCE_URL='https://login.salesforce.com' \
+		-e SUBSCRIPTION='/data/AccountChangeEvent' \
+		sfdc_realtime
