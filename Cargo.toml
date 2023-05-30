@@ -1,0 +1,9 @@
+[package]
+name = "sfdc_realtime"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rust_sync_force = { git = "https://github.com/0cv/rust_sync_force.git", branch = "master" }
+serde = "1"
+serde_json = "1"

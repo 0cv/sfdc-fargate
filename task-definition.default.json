@@ -1,0 +1,59 @@
+{
+    "family": "sfdc-realtime",
+    "taskRoleArn": "arn:aws:iam::AWS_ACCOUNT_ID:role/ECS-SFDC",
+    "executionRoleArn": "arn:aws:iam::AWS_ACCOUNT_ID:role/ecsTaskExecutionRole",
+    "cpu": "256",
+    "memory": "512",
+    "networkMode": "awsvpc",
+    "runtimePlatform": {
+        "operatingSystemFamily": "LINUX"
+    },
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "containerDefinitions": [
+        {
+            "name": "sfdc-realtime",
+            "image": "AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/sfdc_realtime:latest",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "entryPoint": [
+                "sfdc_realtime"
+            ],
+            "environment": [
+                {
+                    "name": "USERNAME",
+                    "value": "salesforceusername@company.com"
+                },
+                {
+                    "name": "PASSWORD",
+                    "value": "password_and_security_token"
+                },
+                {
+                    "name": "INSTANCE_URL",
+                    "value": "https://login.salesforce.com"
+                },
+                {
+                    "name": "SUBSCRIPTION",
+                    "value": "/data/AccountChangeEvent"
+                }
+            ],
+            "cpu": 256,
+            "memory": 512,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/sfdc-realtime",
+                    "awslogs-region": "eu-central-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ]
+}
