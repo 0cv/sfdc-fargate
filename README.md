@@ -4,7 +4,7 @@ Based on AWS Fargate, Docker application written in Rust which connects to Sales
 
 ## How To
 
-1- Create a repo in ECR (`sfdc_realtime`)
+1- Create a repo in ECR (`sfdc_realtime`) and a cluster (`sfdc-realtime`)
 
 2- Create VPC with:
 
