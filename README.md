@@ -23,9 +23,11 @@ Based on AWS Fargate, Docker application written in Rust which connects to Sales
 
 6- Manual Run
 
+```
   docker run --rm -it \
 		-e USERNAME='salesforce@username.com' \
 		-e PASSWORD='password_and_security_token' \
 		-e INSTANCE_URL='https://login.salesforce.com' \
 		-e SUBSCRIPTION='/data/AccountChangeEvent' \
 		sfdc_realtime
+```
